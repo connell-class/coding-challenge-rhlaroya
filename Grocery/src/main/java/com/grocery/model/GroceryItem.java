@@ -3,6 +3,8 @@ package com.grocery.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +29,10 @@ public class GroceryItem {
 	private int price;
 	
 	@Column
-	private String type;
+	private int amount;
+	
+	@Enumerated(EnumType.STRING)
+	private GroceryType type;
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "list")
@@ -48,7 +53,6 @@ public class GroceryItem {
 	public int getPrice() {
 		return price;
 	}
-
 	public GroceryItem getGroceryItem() {
 		return groceryItem;
 	}
@@ -58,40 +62,35 @@ public class GroceryItem {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getType() {
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public GroceryType getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(GroceryType type) {
 		this.type = type;
 	}
-	
 	public GroceryItem() {
 		super();
 	}
-	public GroceryItem(int id, String name, int price, String type) {
+	
+	public GroceryItem(int id, String name, int price, int amount, GroceryType type, GroceryItem groceryItem) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
-		this.type = type;
-	}
-	
-	@Override
-	public String toString() {
-		return "GroceryItem [id=" + id + ", name=" + name + ", price=" + price + ", type=" + type + ", groceryItem="
-				+ groceryItem + "]";
-	}
-	
-	public GroceryItem(int id, String name, int price, String type, GroceryItem groceryItem) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.price = price;
+		this.amount = amount;
 		this.type = type;
 		this.groceryItem = groceryItem;
 	}
 	
-	
-
-	
+	@Override
+	public String toString() {
+		return "GroceryItem [id=" + id + ", name=" + name + ", price=" + price + ", amount=" + amount + ", type=" + type
+				+ ", groceryItem=" + groceryItem + "]";
+	}
 }

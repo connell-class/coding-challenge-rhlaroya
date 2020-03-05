@@ -34,13 +34,13 @@ public class GroceryItemController {
 	@PostMapping("/add")
 	public String insert(@RequestBody GroceryItem gi) {
 		gs.insertGroceryItem(gi);
-		return "Saved Grocery Item";
+		return "Inserted Grocery Item";
 	}
 	
 	@DeleteMapping("/remove")
     public String delete(@RequestBody GroceryItem gi) {
         gs.removeGroceryItem(gi);
-        return "Grovery Item has been removed";
+        return "Grocery Item has been removed";
     }
 	
 }
