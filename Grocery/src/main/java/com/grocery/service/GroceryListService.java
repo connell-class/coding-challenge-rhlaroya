@@ -3,6 +3,7 @@ package com.grocery.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.grocery.dao.GroceryItemDao;
 import com.grocery.dao.GroceryListDao;
 import com.grocery.model.GroceryList;
 
@@ -10,25 +11,25 @@ import com.grocery.model.GroceryList;
 public class GroceryListService {
 
 	@Autowired
-	GroceryListDao gd;
+	GroceryListDao gld;
 	
-	public void setGd(GroceryListDao gd) {
-		this.gd = gd;
-	}
+	public void setgid(GroceryListDao gld) {
+        this.gld = gld;
+    }
 	
-	public Iterable<GroceryListDao> getAll() {
-		return gd.findAll();
+	public Iterable<GroceryList> getAll() {
+		return gld.findAll();
 	}
 	
 	public GroceryList getById(int id) {
-		return gd.findById(id).get();
+		return gld.findById(id).get();
 	}
 	
 	public void insertGroceryList(GroceryList gl) {
-		gd.save(gl);
+		gld.save(gl);
 	}
 	
 	public void removeGroceryList(GroceryList gl) {
-		gd.delete(gl);
+		gld.delete(gl);
 	}
 }
