@@ -3,7 +3,6 @@ package com.grocery.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.grocery.dao.GroceryItemDao;
 import com.grocery.dao.GroceryListDao;
 import com.grocery.model.GroceryList;
 
